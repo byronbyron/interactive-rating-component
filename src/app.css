@@ -18,4 +18,12 @@
 body {
   font-family: 'Overpass', sans-serif;
   font-size: 1rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--very-dark-blue);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
