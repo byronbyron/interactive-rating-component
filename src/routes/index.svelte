@@ -1,36 +1,50 @@
 <script>
   let rating;
+  let form = { submitted: false };
+
+  function updateRating() {
+    rating = this.textContent;
+  }
+
+  function handleSubmit() {
+    form.submitted = true;
+  }
 </script>
 
 <main>
-  
-  <div class="card">
-    <div class="icon">
-      <img src="/icon-star.svg" alt="">
+  {#if !form.submitted}
+    <div class="card">
+      <div class="icon">
+        <img src="/icon-star.svg" alt="">
+      </div>
+
+      <h1>How did we do?</h1>
+
+      <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+
+      <form on:submit|preventDefault={handleSubmit}>
+        <div class="btn-group">
+          <button type="button" on:click={updateRating}>1</button>
+          <button type="button" on:click={updateRating}>2</button>
+          <button type="button" on:click={updateRating}>3</button>
+          <button type="button" on:click={updateRating}>4</button>
+          <button type="button" on:click={updateRating}>5</button>
+        </div>
+
+        <button type="submit" class="btn-primary">Submit</button>
+      </form>
     </div>
+  {:else}
+    <div class="card text-center">
+      <img src="/illustration-thank-you.svg" alt="" width="162" height="108" class="illustration">
 
-    <h1>How did we do?</h1>
+      <p class="badge">You selected {rating} out of 5</p>
 
-    <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+      <h1>Thank you!</h1>
 
-    <div class="btn-group">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>4</button>
-      <button>5</button>
+      <p class="mb-0">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
     </div>
-
-    <button class="btn-primary">Submit</button>
-  </div>
-
-  <div class="card" style="display: none;">
-    <p class="badge">You selected <span>out of 5</span></p>
-
-    <h1>Thank you!</h1>
-
-    <p>We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
-  </div>
+  {/if}
 
 </main>
 
@@ -39,7 +53,7 @@
     font-family: 'Overpass', sans-serif;
     font-size: 1.5rem;
     margin-top: 0;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     color: var(--white);
   }
 
@@ -94,6 +108,7 @@
     max-width: 327px;
     margin-left: auto;
     margin-right: auto;
+    min-height: 360px;
   }
 
   .icon {
@@ -130,6 +145,32 @@
   .btn-primary:focus {
     color: var(--orange);
     background-color: var(--white);
+  }
+
+  .illustration {
+    display: block;
+    width: 145px;
+    height: auto;
+    margin: 0.625rem auto 1.5rem;
+  }
+
+  .badge {
+    line-height: 1;
+    display: inline-block;
+    color: var(--orange);
+    background-color: var(--dark-blue);
+    margin-bottom: 1.375rem;
+    padding: 10px 0.875rem 7px;
+    border-radius: 2rem;
+    letter-spacing: 0.01em;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mb-0 {
+    margin-bottom: 0;
   }
 
 </style>
