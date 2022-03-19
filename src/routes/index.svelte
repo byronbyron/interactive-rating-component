@@ -3,7 +3,7 @@
   let form = { submitted: false };
 
   function updateRating() {
-    rating = this.textContent;
+    rating = parseInt(this.textContent);
   }
 
   function handleSubmit() {
@@ -25,11 +25,11 @@
 
       <form on:submit|preventDefault={handleSubmit}>
         <div class="btn-group">
-          <button type="button" on:click={updateRating}>1</button>
-          <button type="button" on:click={updateRating}>2</button>
-          <button type="button" on:click={updateRating}>3</button>
-          <button type="button" on:click={updateRating}>4</button>
-          <button type="button" on:click={updateRating}>5</button>
+          <button type="button" on:click={updateRating} class:selected={rating === 1}>1</button>
+          <button type="button" on:click={updateRating} class:selected={rating === 2}>2</button>
+          <button type="button" on:click={updateRating} class:selected={rating === 3}>3</button>
+          <button type="button" on:click={updateRating} class:selected={rating === 4}>4</button>
+          <button type="button" on:click={updateRating} class:selected={rating === 5}>5</button>
         </div>
 
         <button type="submit" class="btn-primary">Submit</button>
@@ -46,7 +46,6 @@
       <p class="mb-0">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
     </div>
   {/if}
-
 </main>
 
 <style>
@@ -165,6 +164,11 @@
     letter-spacing: 0.01em;
   }
 
+  .selected {
+    color: var(--white);
+    background-color: var(--medium-grey);
+  }
+
   .text-center {
     text-align: center;
   }
@@ -225,5 +229,4 @@
       letter-spacing: 0.01em;
     }
   }
-
 </style>
