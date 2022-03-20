@@ -1,6 +1,7 @@
 <script>
-  let rating;
+  import { fade } from 'svelte/transition';
   let form = { submitted: false };
+  let rating;
 
   function updateRating() {
     rating = parseInt(this.textContent);
@@ -36,7 +37,7 @@
       </form>
     </div>
   {:else}
-    <div class="card text-center">
+    <div class="card text-center" transition:fade>
       <img src="/illustration-thank-you.svg" alt="" width="162" height="108" class="illustration">
 
       <p class="badge">You selected {rating} out of 5</p>
