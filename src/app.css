@@ -28,6 +28,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 h1 {
   font-family: 'Overpass', sans-serif;
   font-size: 1.5rem;
@@ -70,10 +76,9 @@ button:focus {
   background-color: var(--orange);
 }
 
-main {
-  width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+button.selected {
+  color: var(--white);
+  background-color: var(--medium-grey);
 }
 
 .card {
@@ -141,11 +146,6 @@ main {
   padding: 10px 0.875rem 7px;
   border-radius: 2rem;
   letter-spacing: 0.01em;
-}
-
-.selected {
-  color: var(--white);
-  background-color: var(--medium-grey);
 }
 
 .text-center {
